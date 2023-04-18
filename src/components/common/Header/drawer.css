@@ -1,0 +1,19 @@
+  .link21 {
+    color: var(--theme-color-secondary);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .link21:hover {
+    color: var(--theme-color-secondary);
+    transition: all 0.3s;
+  }
+  
+  @media only screen and (max-width: 800px) {
+    .drawer-div {
+      width: 40vw;
+      background-color: var(--theme-bg-color-primary);
+      height: 100vh;
+      padding: 1.5rem;
+    }
+  }
