@@ -24,7 +24,7 @@ const Header = () => {
           <Button
             text={"Dashboard"}
             onClick={() => console.log("Btn Clicked")}
-            outlined = {true}
+            outlined = {false}
           />
         </Link>
       </div>

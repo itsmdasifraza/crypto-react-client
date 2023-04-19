@@ -40,7 +40,7 @@ const Main = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 1.5 }}
       >
-        <Button text={"Dashboard"} />
+        <Button text={"Dashboard"} outlined={false} />
         <Button text={"Share"} outlined={true} />
       </motion.div>
     </div>
