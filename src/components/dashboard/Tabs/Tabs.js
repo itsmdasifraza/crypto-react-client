@@ -5,7 +5,7 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { createTheme, ThemeProvider } from "@mui/material";
-
+import List from '../List/List';
 import "./Tabs.css";
 
 export default function TabsComponent({ coins }) {
@@ -49,9 +49,9 @@ export default function TabsComponent({ coins }) {
         </TabPanel>
         <TabPanel value="list">
           <table className="list-table">
-            {/* {coins.map((item, i) => {
+            {coins.map((item, i) => {
               return <List coin={item} key={i} />;
-            })} */}
+            })}
           </table>
         </TabPanel>
       </TabContext>

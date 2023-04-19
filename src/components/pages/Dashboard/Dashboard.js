@@ -20,7 +20,7 @@ const Dashboard = () => {
   return (
     <>
     <Header/>
-    <Tabs/>
+    <Tabs coins = {coins}/>
     </>
   )
 }

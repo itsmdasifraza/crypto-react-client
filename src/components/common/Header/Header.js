@@ -23,7 +23,7 @@ const Header = () => {
         <Link to="/dashboard">
           <Button
             text={"Dashboard"}
-            onClick={() => console.log("Btn Clicked")}
+            onClick={() => {}}
             outlined = {false}
           />
         </Link>

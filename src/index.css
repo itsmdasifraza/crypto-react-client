@@ -2,6 +2,7 @@
 
 :root {
   --theme-bg-color-primary : #111;
+  --theme-bg-color-secondary : #202020;
   --theme-color-primary : #3a80e9;
   --theme-color-secondary: #fff;
 }
