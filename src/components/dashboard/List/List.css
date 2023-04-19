@@ -19,6 +19,12 @@
     width: 18%;
   }
   
+  .chip-red{
+    color:red;
+  }
+  .chip-green{
+    color:green;
+  }
   .td-image {
     width: 3rem !important;
     margin-right: 2rem;

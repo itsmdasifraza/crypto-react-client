@@ -26,7 +26,7 @@ function List({ coin }) {
         <Tooltip title="Price Change In 24Hrs" placement="bottom-start">
           {coin.price_change_percentage_24h > 0 ? (
             <td className="chip-flex">
-              <div className="price-chip">
+              <div className="price-chip chip-green">
                 {coin.price_change_percentage_24h.toFixed(2)}%
               </div>
               <div className="icon-chip td-icon">
@@ -77,7 +77,7 @@ function List({ coin }) {
           <td className="mobile-td-mkt">
             <p className="total_volume td-right-align" placement="bottom-end">
               {/* ${convertNumber(coin.market_cap)} */}
-              {coin.market_cap}
+              ${coin.market_cap.toLocaleString()}
             </p>
           </td>
         </Tooltip>
