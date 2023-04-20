@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import Box from "@mui/material/Box";
+import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
@@ -9,8 +9,8 @@ import List from '../List/List';
 import Grid from '../Grid/Grid';
 import "./Tabs.css";
 import Grid2 from '@mui/material/Unstable_Grid2';
-
-export default function TabsComponent({ coins }) {
+import Search from '../Search/Search';
+export default function TabsComponent({ coins, searchBar }) {
   const [value, setValue] = useState("grid");
 
   const handleChange = (event, newValue) => {
@@ -24,22 +24,32 @@ export default function TabsComponent({ coins }) {
       },
     },
   });
-
+  const searchText = (text) =>{
+    searchBar(text);
+  }
   return (
     <ThemeProvider theme={theme}>
       <TabContext  value={value}>
-      {/* <Box  sx={{ borderBottom: 1, borderColor: '#414141' }}> */}
-        <TabList  onChange={handleChange}  centered>
-          <Tab label="Grid View" alignItems="center" value="grid" sx={{color:"white", padding:"0"}} />
-          <Tab label="LIST VIEW" alignItems="center" value="list" sx={{color:"white", padding:"0"}}/>
+      <Grid2 container spacing={2}>
+      <Grid2 xs={12} sm={6} key={56}>
+      <Search searchText ={searchText}/>
+      </Grid2>
+      <Grid2 xs={12} sm={6} key={76}>
+      <Box  sx={{ borderBottom: 1, borderColor: '#414141' }}>
+      <TabList  onChange={handleChange}  >
+          <Tab label="GRID VIEW"  value="grid" sx={{color:"white", padding:"0"}} />
+          <Tab label="LIST VIEW"  value="list" sx={{color:"white", padding:"0"}}/>
         </TabList>
-{/* </Box> */}
+</Box>
+      </Grid2>
+      </Grid2>
+       
         <TabPanel value="grid" sx={{padding: "20px 0"}}>
 
           <Grid2 container spacing={2}>
           {coins.map((coin, i) => {
               return(
-                <Grid2 xs={12} lg={3} key={i}>
+                <Grid2 xs={12} sm={6} md={4} lg={3}  key={i}>
               <Grid coin={coin} key={i} />
                 </Grid2>
               ); 

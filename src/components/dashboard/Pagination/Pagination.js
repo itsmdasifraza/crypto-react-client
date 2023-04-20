@@ -14,7 +14,7 @@ export default function PaginationControlled({updatePaginatedCoins}) {
   
 
   return (
-    <Stack alignItems="center" spacing={2}>
+    <Stack alignItems="center"  spacing={2}>
       <Pagination  color="primary"  sx={{button:{color: '#ffffff'}, div: {color:"#ffffff"}}} count={10} page={page} onChange={handleChange} />
         <br/>
     </Stack>

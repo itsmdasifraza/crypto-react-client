@@ -1,0 +1,10 @@
+.inp90{
+    padding: 10px 15px;
+    border:none;
+    border-radius: 5px;
+    width: 90%;
+    margin-top: 12px;
+}
+.inp90:focus{
+    outline: none;
+}

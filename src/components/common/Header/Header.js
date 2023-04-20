@@ -12,7 +12,7 @@ const Header = () => {
       }}>
 <div className="navbar">
       <h1 className="logo">
-        CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
+        CoinStats
       </h1>
       <div className="links">
         <Link to="/">

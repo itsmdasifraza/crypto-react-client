@@ -4,7 +4,7 @@ import Tabs from '../../dashboard/Tabs/Tabs';
 import {fetchCoins} from '../../../services/fetchCoins';
 import Pagination from '../../dashboard/Pagination/Pagination';
 import Container from '@mui/material/Container';
-
+import filterByText from '../../../filters/filterByText';
 const Dashboard = () => {
     const [coins, setCoins] = useState([]);
     const [paginatedCoins, setPaginatedCoins] = useState([]);
@@ -27,12 +27,16 @@ const Dashboard = () => {
         getCoins();
       }, []);
     
-      
+      const searchBar = (text) =>{
+        // console.log(text);
+        let filteredCoins = filterByText(text, [...coins]);
+        setPaginatedCoins([...filteredCoins].splice((1 - 1) * 10, 10));
+      }
   return (
     <>
     <Header/>
     <Container maxWidth="lg">
-    <Tabs coins = {paginatedCoins}/>
+    <Tabs coins = {paginatedCoins} searchBar = {searchBar}/>
     </Container>
     <Pagination updatePaginatedCoins={updatePaginatedCoins}/>
     </>
