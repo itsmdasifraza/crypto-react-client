@@ -8,21 +8,13 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import List from '../List/List';
 import Grid from '../Grid/Grid';
 import "./Tabs.css";
+import Grid2 from '@mui/material/Unstable_Grid2';
 
 export default function TabsComponent({ coins }) {
   const [value, setValue] = useState("grid");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const style = {
-    color: "var(--white)",
-    width: "50vw",
-    fontSize: "1.2rem",
-    fontWeight: 600,
-    fontFamily: "Inter",
-    textTransform: "capitalize",
   };
 
   const theme = createTheme({
@@ -35,25 +27,37 @@ export default function TabsComponent({ coins }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <TabContext value={value}>
-        <TabList onChange={handleChange} variant="fullWidth">
-          <Tab label="Grid" value="grid" sx={style} />
-          <Tab label="List" value="list" sx={style} />
+      <TabContext  value={value}>
+      {/* <Box  sx={{ borderBottom: 1, borderColor: '#414141' }}> */}
+        <TabList  onChange={handleChange}  centered>
+          <Tab label="Grid View" alignItems="center" value="grid" sx={{color:"white", padding:"0"}} />
+          <Tab label="LIST VIEW" alignItems="center" value="list" sx={{color:"white", padding:"0"}}/>
         </TabList>
+{/* </Box> */}
+        <TabPanel value="grid" sx={{padding: "20px 0"}}>
 
-        <TabPanel value="grid">
-          <div className="grid-flex">
-            {coins.map((coin, i) => {
-              return <Grid coin={coin} key={i} />;
+          <Grid2 container spacing={2}>
+          {coins.map((coin, i) => {
+              return(
+                <Grid2 xs={12} lg={3} key={i}>
+              <Grid coin={coin} key={i} />
+                </Grid2>
+              ); 
+              
+              
             })}
-          </div>
+          </Grid2>
         </TabPanel>
-        <TabPanel value="list">
-          <table className="list-table">
-            {coins.map((item, i) => {
-              return <List coin={item} key={i} />;
+        <TabPanel value="list" sx={{padding: "20px 0"}}>
+        <Grid2 container spacing={0}>
+          {coins.map((coin, i) => {
+              return(
+                <Grid2 xs={12} key={i}>
+              <List coin={coin} key={i} />
+                </Grid2>
+              ); 
             })}
-          </table>
+          </Grid2>
         </TabPanel>
       </TabContext>
     </ThemeProvider>

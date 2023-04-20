@@ -9,36 +9,36 @@ import { Link } from "react-router-dom";
 function List({ coin }) {
   return (
     <Link to={`/coin/${coin.id}`}>
-      <tr className="list-row">
-        <Tooltip title="Coin Logo">
-          <td className="td-image">
-            <img src={coin.image} width="100%" alt={coin.id} className="coin-logo" />
+      <tr className="list-row32">
+        <Tooltip title="">
+          <td className="td-image32">
+            <img src={coin.image} style={{width:"100%"}} alt={coin.id} className="" />
           </td>
         </Tooltip>
         <Tooltip title="Coin Info" placement="bottom-start">
           <td>
-            <div className="name-col">
-              <p className="coin-symbol">{coin.symbol}</p>
-              <p className="coin-name">{coin.name}</p>
+            <div className="">
+              <p className="" style={{margin:0}}>{coin.symbol}</p>
+              <p className="" style={{margin:0}}>{coin.name}</p>
             </div>
           </td>
         </Tooltip>
         <Tooltip title="Price Change In 24Hrs" placement="bottom-start">
           {coin.price_change_percentage_24h > 0 ? (
             <td className="chip-flex">
-              <div className="price-chip chip-green">
-                {coin.price_change_percentage_24h.toFixed(2)}%
+              <div className="chip-green32">
+                <p style={{margin:0}}>{coin.price_change_percentage_24h.toFixed(2)}%</p>
               </div>
-              <div className="icon-chip td-icon">
+              <div className="chip-green32">
                 <TrendingUpRoundedIcon />
               </div>
             </td>
           ) : (
             <td className="chip-flex">
-              <div className="price-chip chip-red">
-                {coin.price_change_percentage_24h.toFixed(2)}%
+              <div className="chip-red32">
+                <p style={{margin:0}}>{coin.price_change_percentage_24h.toFixed(2)}%</p>
               </div>
-              <div className="icon-chip chip-red td-icon">
+              <div className="chip-red32">
                 <TrendingDownRoundedIcon />
               </div>
             </td>
@@ -46,8 +46,8 @@ function List({ coin }) {
         </Tooltip>
         <Tooltip title="Current Price">
           <td>
-            <h3
-              className="coin-price  td-center-align"
+            <p
+              className=""
               style={{
                 color:
                   coin.price_change_percentage_24h < 0
@@ -56,26 +56,26 @@ function List({ coin }) {
               }}
             >
               ${coin.current_price.toLocaleString()}
-            </h3>
+            </p>
           </td>
         </Tooltip>
-        <Tooltip title="Total Volume" placement="bottom-end">
+        <Tooltip title="Total Volume" placement="right">
           <td>
-            <p className="total_volume td-right-align td-total-volume">
+            <p className="">
               {coin.total_volume.toLocaleString()}
             </p>
           </td>
         </Tooltip>
         <Tooltip title="Market Cap">
           <td className="desktop-td-mkt">
-            <p className="total_volume td-right-align" placement="bottom-end">
+            <p className=""style={{textAlign:"right"}}>
               ${coin.market_cap.toLocaleString()}
             </p>
           </td>
         </Tooltip>
         <Tooltip title="Market Cap">
           <td className="mobile-td-mkt">
-            <p className="total_volume td-right-align" placement="bottom-end">
+            <p className="" style={{textAlign:"right"}} placement="bottom-end">
               {/* ${convertNumber(coin.market_cap)} */}
               ${coin.market_cap.toLocaleString()}
             </p>

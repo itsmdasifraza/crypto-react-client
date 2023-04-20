@@ -1,5 +1,5 @@
 .grid-container {
-    width: 300px;
+    /* width: 300px; */
     background-color: var(--theme-bg-color-secondary);
     padding: 15px;
     border-radius: 0.75rem;

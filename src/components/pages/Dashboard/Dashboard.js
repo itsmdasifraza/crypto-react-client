@@ -3,6 +3,7 @@ import Header from '../../common/Header/Header';
 import Tabs from '../../dashboard/Tabs/Tabs';
 import {fetchCoins} from '../../../services/fetchCoins';
 import Pagination from '../../dashboard/Pagination/Pagination';
+import Container from '@mui/material/Container';
 
 const Dashboard = () => {
     const [coins, setCoins] = useState([]);
@@ -30,7 +31,9 @@ const Dashboard = () => {
   return (
     <>
     <Header/>
+    <Container maxWidth="lg">
     <Tabs coins = {paginatedCoins}/>
+    </Container>
     <Pagination updatePaginatedCoins={updatePaginatedCoins}/>
     </>
   )

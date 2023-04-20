@@ -1,41 +1,28 @@
-.list-row {
+.list-row32 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
-    margin: 1.5rem;
-    padding: 1rem;
-    border-radius: 1rem;
-    background-color: var(--theme-bg-color-secondary);
+    border-bottom: 1px solid transparent;
   }
   
-  .list-row:hover {
-    background-color: var(--theme-bg-color-secondary);
-    transition: all 0.3s;
+  .list-row32:hover {
+    border-bottom: 1px solid var(--theme-bg-color-secondary);
   }
   
-  .list-row td {
+  .list-row32 td {
     text-align: left;
     width: 18%;
   }
   
-  .chip-red{
+  .chip-red32{
     color:red;
   }
-  .chip-green{
+  .chip-green32{
     color:green;
   }
-  .td-image {
-    width: 3rem !important;
+  .td-image32 {
+    width: 40px !important;
     margin-right: 2rem;
-  }
-  
-  .td-center-align {
-    text-align: center;
-  }
-  
-  .td-right-align {
-    text-align: right;
   }
   
   .mobile-td-mkt {

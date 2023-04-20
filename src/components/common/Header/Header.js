@@ -3,10 +3,14 @@ import TemporaryDrawer from "./drawer";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./Header.css"; 
+import Container from '@mui/material/Container';
 
 const Header = () => {
   return (
-    <div className="navbar">
+    <Container maxWidth="lg" sx={{   position: "sticky",
+      top: 0,zIndex: 100
+      }}>
+<div className="navbar">
       <h1 className="logo">
         CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
       </h1>
@@ -32,6 +36,8 @@ const Header = () => {
         <TemporaryDrawer/>
       </div>
     </div>
+    </Container>
+    
   );
 }
 
