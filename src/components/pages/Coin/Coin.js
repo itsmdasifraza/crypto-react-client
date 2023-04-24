@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Coin.css';
 import coinData from '../../../services/coinData';
-import coinPrices from '../../../services/coinPrices';
+import coinMarketData from '../../../services/coinMarketData';
 import { useParams } from 'react-router-dom';
 import setChartData from '../../../functions/setChartData';
 import LineChart from '../../chart/LineChart/LineChart';
@@ -17,7 +17,7 @@ const Coin = () => {
     const [coin, setCoin] = useState({});
     const [chart, setChart] = useState({});
     const [days, setDays] = useState(60);
-    const [priceType, setPriceType] = useState("prices");
+    const [chartType, setChartType] = useState("prices");
     useEffect(()=>{
         getCoinData();
     },[]);
@@ -37,7 +37,7 @@ const Coin = () => {
                 current_price: data.market_data.current_price.usd,
                 market_cap: data.market_data.market_cap.usd,
               });
-          const prices = await coinPrices(id, days, priceType);
+          const prices = await coinMarketData(id, days, chartType);
         //   console.log(prices);
           if (prices.length > 0) {
             setChartData(setChart, prices);
@@ -48,7 +48,7 @@ const Coin = () => {
 
       const handleDaysChange = async (event) => {
         setDays(event.target.value);
-        const prices = await coinPrices(id, parseInt(event.target.value), priceType);
+        const prices = await coinMarketData(id, parseInt(event.target.value), chartType);
         //   console.log(prices);
           if (prices.length > 0) {
             setChartData(setChart, prices);
@@ -71,7 +71,7 @@ const Coin = () => {
         </Container>
         <br/>
         <Container maxWidth="lg">
-            <LineChart chartData={chart} priceType={priceType} />
+            <LineChart chartData={chart} chartType={chartType} />
         </Container>
         </>
         }

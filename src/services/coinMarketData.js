@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const coinPrices = (id, days, priceType) => {
+const coinMarketData = (id, days, chartType) => {
     let promise = new Promise((resolve, reject)=>{
         axios
         .get(
@@ -8,8 +8,8 @@ const coinPrices = (id, days, priceType) => {
             { crossDomain: true }
           )
         .then((res) => {
-            console.log(res.data[priceType]);
-            resolve(res.data[priceType]);
+            console.log(res.data[chartType]);
+            resolve(res.data[chartType]);
         })
         .catch((err) => {
             reject(err);
@@ -19,4 +19,4 @@ const coinPrices = (id, days, priceType) => {
     return promise;
 };
 
-export default coinPrices;
+export default coinMarketData;
