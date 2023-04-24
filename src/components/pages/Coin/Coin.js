@@ -8,6 +8,8 @@ import LineChart from '../../chart/LineChart/LineChart';
 import Container from '@mui/material/Container';
 import Header from '../../common/Header/Header';
 import List from '../../dashboard/List/List';
+import SelectDays from '../../coin/SelectDays/SelectDays';
+
 const Coin = () => {
 
     const { id } = useParams();
@@ -44,6 +46,15 @@ const Coin = () => {
         }
       }
 
+      const handleDaysChange = async (event) => {
+        setDays(event.target.value);
+        const prices = await coinPrices(id, parseInt(event.target.value), priceType);
+        //   console.log(prices);
+          if (prices.length > 0) {
+            setChartData(setChart, prices);
+          }
+      };
+
   return (
     <>
         <Header/>
@@ -52,8 +63,13 @@ const Coin = () => {
         {isLoading ? <></>:
         <>
         <Container maxWidth="lg">
-        <List coin={coin} key={1} />
+            <List coin={coin} key={1} />
         </Container>
+        <br/>
+        <Container maxWidth="lg">
+            <SelectDays days={days} handleDaysChange={handleDaysChange} />
+        </Container>
+        <br/>
         <Container maxWidth="lg">
             <LineChart chartData={chart} priceType={priceType} />
         </Container>
