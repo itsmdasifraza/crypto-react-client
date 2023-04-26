@@ -42,7 +42,7 @@ const CompareSelect = ({ coinOne, coinTwo, handleCoinOneChange, handleCoinTwoCha
       {isLoading ? <></> : <>
         <Grid2 container spacing={2}>
           <Grid2 xs={12} sm={3}>
-            <InputLabel id="demo-simple-select-label" sx={{ color: "white" }} >Select coin one</InputLabel>
+            <InputLabel id="demo-simple-select-label" sx={{ color: "white" }} >Select first Coin</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -66,7 +66,7 @@ const CompareSelect = ({ coinOne, coinTwo, handleCoinOneChange, handleCoinTwoCha
             </div>
           </Grid2>
           <Grid2 xs={12} sm={3}>
-            <InputLabel id="demo-simple-select-label" sx={{ color: "white" }} >Select coin two</InputLabel>
+            <InputLabel id="demo-simple-select-label" sx={{ color: "white" }} >Select second Coin</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"

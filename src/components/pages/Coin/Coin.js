@@ -88,10 +88,10 @@ const Coin = () => {
 
           <Container maxWidth="lg">
             <Grid2 container spacing={0} >
-              <Grid2 xs={12} sm={3} md={4} >
+              <Grid2 xs={12} sm={3} md={3} >
                 <SelectDays  days={days} handleDaysChange={handleDaysChange} />
               </Grid2>
-              <Grid2 xs={12} sm={1} md={2} >
+              <Grid2 xs={12} sm={1} md={3} >
                 
               </Grid2>
               <Grid2 xs={12} sm={8}   md={6}>

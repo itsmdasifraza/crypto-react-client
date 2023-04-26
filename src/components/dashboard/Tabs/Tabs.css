@@ -19,3 +19,9 @@
       width: 95%;
     }
   }
+
+  @media only screen and (max-width:900px){
+    .list-view-34{
+        display: none !important;
+    }
+}

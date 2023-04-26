@@ -38,7 +38,7 @@ export default function TabsComponent({ coins, searchBar }) {
       <Box  sx={{ borderBottom: 1, borderColor: '#414141' }}>
       <TabList  onChange={handleChange}  >
           <Tab label="GRID VIEW"  value="grid" sx={{color:"white", padding:"0"}} />
-          <Tab label="LIST VIEW"  value="list" sx={{color:"white", padding:"0"}}/>
+          <Tab className="list-view-34" label="LIST VIEW"  value="list" sx={{color:"white", padding:"0"}}/>
         </TabList>
 </Box>
       </Grid2>

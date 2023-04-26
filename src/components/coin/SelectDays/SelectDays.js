@@ -9,7 +9,7 @@ const SelectDays = ({days, handleDaysChange}) => {
 
   return (
     <>
-      <InputLabel id="demo-simple-select-label" sx={{color:"white"}} >Price change in last</InputLabel>
+      <InputLabel id="demo-simple-select-label" sx={{color:"white"}} >Track changes in last</InputLabel>
       <Select 
     labelId="demo-simple-select-label"
     id="demo-simple-select"

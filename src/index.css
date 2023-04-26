@@ -18,17 +18,12 @@ body {
   color: var(--theme-color-secondary);
 }
 
-::selection {
-  background-color: var(--theme-color-primary);
-  color: var(--white);
-}
-
 ::-webkit-scrollbar {
   width: 0.3rem;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--theme-color-primary);
+  background: grey;
   border-radius: 10px;
 }
 
