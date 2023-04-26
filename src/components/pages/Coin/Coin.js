@@ -11,7 +11,7 @@ import List from '../../dashboard/List/List';
 import SelectDays from '../../coin/SelectDays/SelectDays';
 import ChartType from '../../coin/ChartType/ChartType';
 import Grid2 from '@mui/material/Unstable_Grid2';
-
+import Grid from '../../dashboard/Grid/Grid';
 const Coin = () => {
 
   const { id } = useParams();
@@ -20,49 +20,50 @@ const Coin = () => {
   const [chart, setChart] = useState({});
   const [days, setDays] = useState(60);
   const [chartType, setChartType] = useState("prices");
+  const [marketData, setMarketData] = useState({});
+  
   useEffect(() => {
     getCoinData();
-  }, []);
-
-  async function getCoinData() {
-    const data = await coinData(id);
-    // console.log(data);
-    if (data) {
-      setCoin({
-        id: data.id,
-        name: data.name,
-        symbol: data.symbol,
-        image: data.image.large,
-        desc: data.description.en,
-        price_change_percentage_24h: data.market_data.price_change_percentage_24h,
-        total_volume: data.market_data.total_volume.usd,
-        current_price: data.market_data.current_price.usd,
-        market_cap: data.market_data.market_cap.usd,
-      });
-      const prices = await coinMarketData(id, days, chartType);
-      //   console.log(prices);
-      if (prices.length > 0) {
-        setChartData(setChart, prices);
+    async function getCoinData() {
+      const data = await coinData(id);
+      // console.log(data);
+      if (data) {
+        setCoin({
+          id: data.id,
+          name: data.name,
+          symbol: data.symbol,
+          image: data.image.large,
+          desc: data.description.en,
+          price_change_percentage_24h: data.market_data.price_change_percentage_24h,
+          total_volume: data.market_data.total_volume.usd,
+          current_price: data.market_data.current_price.usd,
+          market_cap: data.market_data.market_cap.usd,
+        });
         setIsLoading(false);
       }
     }
-  }
+  }, [id]);
+
+  useEffect(() => {
+    getCoinMarketData();
+    async function getCoinMarketData(){
+      const market = await coinMarketData(id, days);
+      if (market) {
+        setMarketData(market);
+        setChartData(setChart, market[chartType]);
+      }
+    }
+  }, [days, id]);
+
+ 
+  
 
   const handleDaysChange = async (event) => {
     setDays(event.target.value);
-    const prices = await coinMarketData(id, parseInt(event.target.value), chartType);
-    //   console.log(prices);
-    if (prices.length > 0) {
-      setChartData(setChart, prices);
-    }
   };
   const handleChartTypeChange = async (event) => {
-    setChartType(event.target.value);
-    const prices = await coinMarketData(id, parseInt(days), event.target.value);
-    //console.log(prices);
-    if (prices.length > 0) {
-      setChartData(setChart, prices);
-    }
+      setChartType(event.target.value);
+      setChartData(setChart,marketData[event.target.value]);
   }
   return (
     <>
@@ -72,16 +73,23 @@ const Coin = () => {
       {isLoading ? <></> :
         <>
           <Container maxWidth="lg">
-            <List coin={coin} key={1} />
+            <div className="list-view-78">
+            <List coin={coin} />
+
+            </div>
+            <div className="grid-view-78">
+            <Grid coin={coin} />
+
+            </div>
           </Container>
           <br />
 
           <Container maxWidth="lg">
             <Grid2 container spacing={0} >
-              <Grid2 xs={12} sm={2} key={1}  >
+              <Grid2 xs={12} sm={3} key={1}  >
                 <SelectDays  days={days} handleDaysChange={handleDaysChange} />
               </Grid2>
-              <Grid2 xs={12} sm={4} key={2}  >
+              <Grid2 xs={12} sm={9} key={2}  >
                 <br/>
                 <ChartType  chartType={chartType} handleChartTypeChange={handleChartTypeChange} />
 
@@ -90,7 +98,11 @@ const Coin = () => {
           </Container>
           <br />
           <Container maxWidth="lg">
-            <LineChart chartData={chart} chartType={chartType} />
+            {chart ? 
+             <LineChart chartData={chart} chartType={chartType} />
+             : 
+             <></>
+             }
           </Container>
         </>
       }
