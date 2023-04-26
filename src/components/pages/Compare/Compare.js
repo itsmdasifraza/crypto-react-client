@@ -9,6 +9,8 @@ import List from '../../dashboard/List/List';
 import Container from '@mui/material/Container';
 import SelectDays from '../../coin/SelectDays/SelectDays';
 import LineChart from '../../chart/LineChart/LineChart';
+import ChartType from '../../coin/ChartType/ChartType';
+
 export const Compare = () => {
 
     const [coinOne, setCoinOne] = useState("bitcoin");
@@ -24,7 +26,6 @@ export const Compare = () => {
 
 
       async function getCoinData() {
-        setIsLoading(true);
         const data1 = await coinData(coinOne);
         if (data1) {
           const data2 = await coinData(coinTwo);
@@ -69,6 +70,9 @@ export const Compare = () => {
     const handleDaysChange = async (event) => {
         setDays(event.target.value);
       };
+      const handleChartTypeChange = async (event) => {
+        setChartType(event.target.value);
+      };
   return (
     <div>
         <Header />
@@ -76,6 +80,7 @@ export const Compare = () => {
         <Container maxWidth="lg">
             <CompareSelect coinOne = {coinOne} coinTwo={coinTwo} handleCoinOneChange = {handleCoinOneChange} handleCoinTwoChange={handleCoinTwoChange} />
             <SelectDays  days={days} handleDaysChange={handleDaysChange} />
+            
         </Container>
         <br/>
         {isLoading ? <></> :
@@ -85,6 +90,7 @@ export const Compare = () => {
                     <List coin={coinTwoData} key={2} />
             </Container>
             <Container maxWidth="lg">
+                 <ChartType  chartType={chartType} handleChartTypeChange={handleChartTypeChange} />
                 <LineChart chartData={chart} chartType={chartType} />
           </Container>
         </>
