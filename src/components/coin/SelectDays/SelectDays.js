@@ -10,7 +10,7 @@ const SelectDays = ({days, handleDaysChange}) => {
   return (
     <>
       <InputLabel id="demo-simple-select-label" sx={{color:"white"}} >Price change in last</InputLabel>
-      <Select
+      <Select 
     labelId="demo-simple-select-label"
     id="demo-simple-select"
     value={days}
@@ -18,6 +18,7 @@ const SelectDays = ({days, handleDaysChange}) => {
     onChange={handleDaysChange}
     
     sx={{
+      width:"100%",
         height: "2.5rem",
         color: "var(--theme-color-secondary)",
         "& .MuiOutlinedInput-notchedOutline": {

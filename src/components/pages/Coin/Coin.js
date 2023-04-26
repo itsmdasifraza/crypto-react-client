@@ -15,7 +15,8 @@ import Grid from '../../dashboard/Grid/Grid';
 const Coin = () => {
 
   const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isCoinLoading, setIsCoinLoading] = useState(true);
+  const [isChartLoading, setIsChartLoading] = useState(true);
   const [coin, setCoin] = useState({});
   const [chart, setChart] = useState({});
   const [days, setDays] = useState(60);
@@ -39,7 +40,7 @@ const Coin = () => {
           current_price: data.market_data.current_price.usd,
           market_cap: data.market_data.market_cap.usd,
         });
-        setIsLoading(false);
+        setIsCoinLoading(false);
       }
     }
   }, [id]);
@@ -51,6 +52,7 @@ const Coin = () => {
       if (market) {
         setMarketData(market);
         setChartData(setChart, market[chartType]);
+        setIsChartLoading(false);
       }
     }
   }, [days, id]);
@@ -70,7 +72,7 @@ const Coin = () => {
       <Header />
 
       <br />
-      {isLoading ? <></> :
+      {isCoinLoading ? <></> :
         <>
           <Container maxWidth="lg">
             <div className="list-view-78">
@@ -86,10 +88,13 @@ const Coin = () => {
 
           <Container maxWidth="lg">
             <Grid2 container spacing={0} >
-              <Grid2 xs={12} sm={3} key={1}  >
+              <Grid2 xs={12} sm={3} md={4} >
                 <SelectDays  days={days} handleDaysChange={handleDaysChange} />
               </Grid2>
-              <Grid2 xs={12} sm={9} key={2}  >
+              <Grid2 xs={12} sm={1} md={2} >
+                
+              </Grid2>
+              <Grid2 xs={12} sm={8}   md={6}>
                 <br/>
                 <ChartType  chartType={chartType} handleChartTypeChange={handleChartTypeChange} />
 
@@ -98,10 +103,10 @@ const Coin = () => {
           </Container>
           <br />
           <Container maxWidth="lg">
-            {chart ? 
-             <LineChart chartData={chart} chartType={chartType} />
-             : 
-             <></>
+          {isChartLoading ? <></> :
+            
+             <LineChart chartData={chart} chartType={chartType} /> 
+             
              }
           </Container>
         </>

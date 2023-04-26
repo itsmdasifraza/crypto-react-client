@@ -1,0 +1,11 @@
+.grid-view-67{
+    display: none;
+}
+@media only screen and (max-width:900px){
+    .grid-view-67{
+        display: block;
+    }
+    .list-view-67{
+        display: none;
+    }
+}

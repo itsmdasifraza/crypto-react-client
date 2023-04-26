@@ -3,12 +3,13 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import "./ChartType.css";
 export default function ChartType({ chartType, handleChartTypeChange }) {
   return (
-    <div className="toggle-prices">
+    <>
       <ToggleButtonGroup
         value={chartType}
         exclusive
         onChange={handleChartTypeChange}
         sx={{
+            width:"100%",
           "& .Mui-selected": {
             color: "var(--theme-color-primary) !important",
           },
@@ -24,16 +25,19 @@ export default function ChartType({ chartType, handleChartTypeChange }) {
           },
         }}
       >
-        <ToggleButton value="prices" className="toggle-btn">
+        <ToggleButton sx={{
+            width:"33.3%"}} value="prices" className="toggle-btn">
           Price
         </ToggleButton>
-        <ToggleButton value="market_caps" className="toggle-btn">
+        <ToggleButton sx={{
+            width:"33.3%"}} value="market_caps" className="toggle-btn">
           Market Cap
         </ToggleButton>
-        <ToggleButton value="total_volumes" className="toggle-btn">
+        <ToggleButton sx={{
+            width:"33.3%"}} value="total_volumes" className="toggle-btn">
           Total Volume
         </ToggleButton>
       </ToggleButtonGroup>
-    </div>
+    </>
   );
 }

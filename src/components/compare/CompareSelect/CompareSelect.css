@@ -1,0 +1,5 @@
+@media only screen and (max-width: 599px){
+    .compare-sign-02{
+        display: none !important;
+    }
+}
