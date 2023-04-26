@@ -61,7 +61,7 @@ const CompareSelect = ({ coinOne, coinTwo, handleCoinOneChange, handleCoinTwoCha
             <div className="compare-sign-02"  style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
               <div>
               <br/>
-              <CompareArrowsIcon sx={{ fontSize: 40 }} />
+              <CompareArrowsIcon sx={{ fontSize: 40, color:"var(--theme-color-primary)" }} />
               </div>
             </div>
           </Grid2>

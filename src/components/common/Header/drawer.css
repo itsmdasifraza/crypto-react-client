@@ -1,6 +1,6 @@
   .link21 {
     color: var(--theme-color-secondary);
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 1rem;
   }
   
@@ -9,11 +9,11 @@
     transition: all 0.3s;
   }
   
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 900px) {
     .drawer-div {
-      width: 40vw;
+      width: 250px;
       background-color: var(--theme-bg-color-primary);
       height: 100vh;
-      padding: 1.5rem;
+      padding: 15px;
     }
   }

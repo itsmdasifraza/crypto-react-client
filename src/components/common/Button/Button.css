@@ -2,7 +2,7 @@
     background-color: var(--theme-color-primary);
     color: var(--theme-color-secondary);
     padding: 0.5rem 1.5rem;
-    border-radius: 3rem;
+    border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
  
@@ -16,7 +16,7 @@
     color: var(--theme-color-secondary);
     border: 2px solid var(--theme-color-primary);
     padding: 0.5rem 1.5rem;
-    border-radius: 3rem;
+    border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
     text-align: center;

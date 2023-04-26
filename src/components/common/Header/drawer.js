@@ -13,19 +13,24 @@ export default function TemporaryDrawer() {
       <IconButton onClick={() => setOpen(true)}>
         <MenuRoundedIcon sx={{ color: "white" }} className="link21" />
       </IconButton>
-      <Drawer anchor={"right"} open={open} onClose={() => setOpen(false)}>
+      <Drawer anchor={"left"} open={open} onClose={() => setOpen(false)}>
         <div className="drawer-div">
+          <div>
+          <Link to="/">
+            <p className="link21">CoinStats</p>
+          </Link>
+          </div>
           <Link to="/">
             <p className="link21">Home</p>
+          </Link>
+          <Link to="/dashboard">
+            <p className="link21">Coin</p>
           </Link>
           <Link to="/compare">
             <p className="link21">Compare</p>
           </Link>
-          <Link to="/watchlist">
-            <p className="link21">Watchlist</p>
-          </Link>
-          <Link to="/dashboard">
-            <p className="link21">Dashboard</p>
+          <Link to="/starred">
+            <p className="link21">Starred</p>
           </Link>
         </div>
       </Drawer>

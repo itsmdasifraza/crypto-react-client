@@ -11,25 +11,21 @@ const Header = () => {
       top: 0,zIndex: 100
       }}>
 <div className="navbar">
-      <h1 className="logo">
-        CoinStats
-      </h1>
+        <Link to="/">
+          <p className="link">CoinStats</p>
+        </Link>
       <div className="links">
         <Link to="/">
           <p className="link">Home</p>
         </Link>
+        <Link to="/dashboard">
+        <p className="link">Coins</p>
+        </Link>
         <Link to="/compare">
           <p className="link">Compare</p>
         </Link>
-        <Link to="/watchlist">
-          <p className="link">Watchlist</p>
-        </Link>
-        <Link to="/dashboard">
-          <Button
-            text={"Dashboard"}
-            onClick={() => {}}
-            outlined = {false}
-          />
+        <Link to="/starred">
+          <p className="link">Starred</p>
         </Link>
       </div>
       <div className="mobile-drawer">
