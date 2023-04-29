@@ -6,13 +6,45 @@ import { Link } from "react-router-dom";
 import StarsIcon from '@mui/icons-material/Stars';
 
 function Grid({ coin }) {
+
   const style = {
     color:
       coin.price_change_percentage_24h < 0
         ? "red"
         : "green",
   }
+  const handleStarredItem = ()=>{
+    let starredCoins = localStorage.getItem("starred_coins");
+    if(!starredCoins){
+      localStorage.setItem("starred_coins", JSON.stringify([coin.id]));
+    }
+    else{
+      starredCoins = JSON.parse(starredCoins);
+      if(starredCoins.includes(coin.id)){
+        // remove coin
+        starredCoins = [...starredCoins].filter((elem)=>{
+          if(elem === coin.id) return false;
+          return true;
+        })
+        localStorage.setItem("starred_coins",JSON.stringify([...starredCoins]));
+      }
+      else{
+        // add coin
+        localStorage.setItem("starred_coins",JSON.stringify([...starredCoins,coin.id]));
+      }
+    }
+  }
+
   return (
+    <div className="rel-obj09">
+      <div className="icon" onClick={handleStarredItem}>
+        {coin.starred ?
+         <StarsIcon color="primary" sx={{fontSize:30}}/>
+        
+        :
+        <StarsIcon color="" sx={{fontSize:30}}/>
+        }
+      </div>
     <Link to={`/coin/${coin.id}`}>
       <div className="container87">
         <div className="flex43">
@@ -44,6 +76,7 @@ function Grid({ coin }) {
         </div>
       </div>
     </Link>
+    </div>
   );
 }
 
