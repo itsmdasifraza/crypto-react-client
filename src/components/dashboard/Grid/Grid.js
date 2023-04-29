@@ -4,9 +4,11 @@ import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import { Link } from "react-router-dom";
 import StarsIcon from '@mui/icons-material/Stars';
+import { starredCoin, unstarredCoin} from "../../../redux/actions/coinsAction";
+import { useDispatch } from "react-redux";
 
 function Grid({ coin }) {
-
+  const dispatch = useDispatch();
   const style = {
     color:
       coin.price_change_percentage_24h < 0
@@ -27,10 +29,12 @@ function Grid({ coin }) {
           return true;
         })
         localStorage.setItem("starred_coins",JSON.stringify([...starredCoins]));
+        dispatch(unstarredCoin(coin.id));
       }
       else{
         // add coin
         localStorage.setItem("starred_coins",JSON.stringify([...starredCoins,coin.id]));
+        dispatch(starredCoin(coin.id));
       }
     }
   }

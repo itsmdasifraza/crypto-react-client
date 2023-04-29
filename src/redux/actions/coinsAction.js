@@ -4,6 +4,20 @@ const setCoins = (coins) => {
     payload: coins,
   };
 };
+const starredCoin = (id) => {
+  return {
+    type: "STARRED_COIN",
+    payload: id,
+  };
+};
+
+const unstarredCoin = (id) => {
+  return {
+    type: "UNSTARRED_COIN",
+    payload: id,
+  };
+};
 
 
-export {setCoins};
+
+export {setCoins, starredCoin, unstarredCoin};

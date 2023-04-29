@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { fetchCoins } from '../../../services/fetchCoins';
+import Select from '@mui/material/Select';
 import Grid2 from '@mui/material/Unstable_Grid2';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import './CompareSelect.css';
+import { useSelector } from "react-redux";
+
 const CompareSelect = ({ coinOne, coinTwo, handleCoinOneChange, handleCoinTwoChange }) => {
 
-  const [coins, setCoins] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const getCoins = async () => {
-      const coin = await fetchCoins();
-      if (coin) {
-        setCoins(coin);
-        setIsLoading(false);
-      }
-    };
-    getCoins();
-  }, []);
+  const coins = useSelector((state) => state.coins);
+ 
 
   let style = {
     width:"100%",
@@ -39,7 +29,7 @@ const CompareSelect = ({ coinOne, coinTwo, handleCoinOneChange, handleCoinTwoCha
   }
   return (
     <>
-      {isLoading ? <></> : <>
+  
         <Grid2 container spacing={2}>
           <Grid2 xs={12} sm={3}>
             <InputLabel id="demo-simple-select-label" sx={{ color: "white" }} >Select first Coin</InputLabel>
@@ -82,10 +72,6 @@ const CompareSelect = ({ coinOne, coinTwo, handleCoinOneChange, handleCoinTwoCha
             </Select>
           </Grid2>
         </Grid2>
-
-
-
-      </>}
 
     </>
 
