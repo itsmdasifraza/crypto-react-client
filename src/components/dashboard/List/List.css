@@ -1,52 +1,30 @@
-.list-row32 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid transparent;
-  }
-  
-  .list-row32:hover {
-    border-bottom: 1px solid var(--theme-bg-color-secondary);
-  }
-  
-  .list-row32 td {
-    text-align: left;
-    width: 18%;
-  }
-  
-  .chip-red32{
-    color:red;
-  }
-  .chip-green32{
-    color:green;
-  }
-  .td-image32 {
-    width: 40px !important;
-    margin-right: 2rem;
-  }
-  
-  .mobile-td-mkt {
-    display: none;
-  }
-  
-  @media only screen and (max-width: 1100px) {
-    .td-icon {
-      display: none;
-    }
-  }
-  
-  @media only screen and (max-width: 1000px) {
-    .td-total-volume {
-      display: none;
-    }
-  }
-  
-  @media only screen and (max-width: 800px) {
-    .desktop-td-mkt {
-      display: none;
-    }
-  
-    .mobile-td-mkt {
-      display: block;
-    }
-  }
+.rel-obj11{
+  position: relative;
+}
+.rel-obj11 .icon{
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  top:0;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.rel-obj11 .d-flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--theme-bg-color-secondary);
+  padding: 0 15px;
+  margin-bottom: 5px;  
+  border-radius: 5px;
+
+}
+.rel-obj11 .coin-logo{
+  width: 40px;
+  height: 40px;
+}
+.rel-obj11 .f-width{
+  width: 10% !important;
+}

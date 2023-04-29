@@ -4,8 +4,9 @@ import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import { Link } from "react-router-dom";
 import StarsIcon from '@mui/icons-material/Stars';
-import { starredCoin, unstarredCoin} from "../../../redux/actions/coinsAction";
+import starredCoin from "../../../functions/starredCoin";
 import { useDispatch } from "react-redux";
+import { Tooltip } from "@mui/material";
 
 function Grid({ coin }) {
   const dispatch = useDispatch();
@@ -15,71 +16,64 @@ function Grid({ coin }) {
         ? "red"
         : "green",
   }
-  const handleStarredItem = ()=>{
-    let starredCoins = localStorage.getItem("starred_coins");
-    if(!starredCoins){
-      localStorage.setItem("starred_coins", JSON.stringify([coin.id]));
-    }
-    else{
-      starredCoins = JSON.parse(starredCoins);
-      if(starredCoins.includes(coin.id)){
-        // remove coin
-        starredCoins = [...starredCoins].filter((elem)=>{
-          if(elem === coin.id) return false;
-          return true;
-        })
-        localStorage.setItem("starred_coins",JSON.stringify([...starredCoins]));
-        dispatch(unstarredCoin(coin.id));
-      }
-      else{
-        // add coin
-        localStorage.setItem("starred_coins",JSON.stringify([...starredCoins,coin.id]));
-        dispatch(starredCoin(coin.id));
-      }
-    }
+  const handleStarredItem = () => {
+    starredCoin(coin, dispatch);
   }
 
   return (
     <div className="rel-obj09">
       <div className="icon" onClick={handleStarredItem}>
         {coin.starred ?
-         <StarsIcon color="primary" sx={{fontSize:30}}/>
-        
-        :
-        <StarsIcon color="" sx={{fontSize:30}}/>
+          <Tooltip title="Unstar" placement="bottom-start">
+            <StarsIcon color="primary" sx={{ fontSize: 30 }} />
+          </Tooltip>
+          :
+          <Tooltip title="Star" placement="bottom-start">
+            <StarsIcon color="" sx={{ fontSize: 30 }} />
+          </Tooltip>
         }
       </div>
-    <Link to={`/coin/${coin.id}`}>
-      <div className="container87">
-        <div className="flex43">
-          <img src={coin.image} alt={coin.id} className="coin-logo43" />
-          <div className="crypt-name87">
-            <h4>{coin.name}</h4>
-            <p>{coin.symbol}</p>
+      <Link to={`/coin/${coin.id}`}>
+        <div className="container87">
+          <div className="flex43">
+          <Tooltip title="Icon" placement="bottom-start">
+            <img src={coin.image} alt={coin.id} className="coin-logo43" />
+          </Tooltip>
+            <Tooltip title="Coin Info" placement="bottom-start">
+            <div className="crypt-name87">
+              <h4>{coin.name}</h4>
+              <p>{coin.symbol}</p>
+            </div>
+            </Tooltip>
+            <div><StarsIcon sx={{ fontSize: 30 }} /></div>
           </div>
-          <div><StarsIcon sx={{fontSize:30}}/></div>
-        </div>
           <div className="change-percentage87">
             <div className=" " style={style} >
+            <Tooltip title="Price Change In 24Hrs" placement="bottom-start">
               <p>{coin.price_change_percentage_24h.toFixed(2)}%</p>
+            </Tooltip>
             </div>
             <div>
-                <h3 style={style}>${coin.current_price.toLocaleString()}</h3>
+            <Tooltip title="Current Price">
+              <h3 style={style}>${coin.current_price.toLocaleString()}</h3>
+            </Tooltip>
             </div>
             <div className="">
+            <Tooltip title="Insight In 24Hrs" placement="bottom-start">
               {coin.price_change_percentage_24h > 0 ?
-              <p><TrendingUpRoundedIcon style={style}/></p> :
-              <p><TrendingDownRoundedIcon style={style} /></p>}
+                <p><TrendingUpRoundedIcon style={style} /></p> :
+                <p><TrendingDownRoundedIcon style={style} /></p>}
+            </Tooltip>
             </div>
           </div>
-       
-        <div className="">
-          <p style={{textAlign:"center"}}>Total Volume: {coin.total_volume.toLocaleString()}</p>
-          <p style={{textAlign:"center"}}>Market Cap: ${coin.market_cap.toLocaleString()}</p>
-          {/* <p style={{textAlign:"center"}}>Total Supply: {coin.total_supply}</p> */}
+
+          <div className="">
+            <p style={{ textAlign: "center" }}>Total Volume: {coin.total_volume.toLocaleString()}</p>
+            <p style={{ textAlign: "center" }}>Market Cap: ${coin.market_cap.toLocaleString()}</p>
+            {/* <p style={{textAlign:"center"}}>Total Supply: {coin.total_supply}</p> */}
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
     </div>
   );
 }

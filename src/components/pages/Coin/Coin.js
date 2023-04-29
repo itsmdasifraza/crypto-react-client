@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './Coin.css';
-import coinData from '../../../services/coinData';
 import coinMarketData from '../../../services/coinMarketData';
 import { useParams } from 'react-router-dom';
 import setChartData from '../../../functions/setChartData';
@@ -12,9 +11,11 @@ import SelectDays from '../../coin/SelectDays/SelectDays';
 import ChartType from '../../coin/ChartType/ChartType';
 import Grid2 from '@mui/material/Unstable_Grid2';
 import Grid from '../../dashboard/Grid/Grid';
+import { useSelector } from "react-redux";
 const Coin = () => {
 
   const { id } = useParams();
+  const coins = useSelector((state) => state.coins);
   const [isCoinLoading, setIsCoinLoading] = useState(true);
   const [isChartLoading, setIsChartLoading] = useState(true);
   const [coin, setCoin] = useState({});
@@ -22,28 +23,17 @@ const Coin = () => {
   const [days, setDays] = useState(60);
   const [chartType, setChartType] = useState("prices");
   const [marketData, setMarketData] = useState({});
-  
-  useEffect(() => {
-    getCoinData();
-    async function getCoinData() {
-      const data = await coinData(id);
-      // console.log(data);
-      if (data) {
-        setCoin({
-          id: data.id,
-          name: data.name,
-          symbol: data.symbol,
-          image: data.image.large,
-          desc: data.description.en,
-          price_change_percentage_24h: data.market_data.price_change_percentage_24h,
-          total_volume: data.market_data.total_volume.usd,
-          current_price: data.market_data.current_price.usd,
-          market_cap: data.market_data.market_cap.usd,
-        });
-        setIsCoinLoading(false);
-      }
+
+  useEffect(()=>{
+    if(coins.length > 0 && id){
+      let data = [...coins].filter((elem)=>{
+        if(elem.id === id) return true;
+        return false;
+      });
+      setCoin(data[0]);
+      setIsCoinLoading(false);
     }
-  }, [id]);
+  },[coins,id ]);
 
   useEffect(() => {
     getCoinMarketData();

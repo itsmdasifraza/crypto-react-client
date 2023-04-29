@@ -4,7 +4,7 @@ const coinsReducer = (state = intialState, { type, payload }) => {
   switch (type) {
     case "SET_COINS":
       return payload;
-    case "STARRED_COIN":
+    case "SETSTARRED_COIN":
       let data = [...state].map((elem)=>{
         if(elem.id === payload){
           elem.starred = true;
@@ -12,7 +12,7 @@ const coinsReducer = (state = intialState, { type, payload }) => {
         return elem;
       });
       return data;
-    case "UNSTARRED_COIN":
+    case "UNSETSTARRED_COIN":
       let data1 = [...state].map((elem)=>{
         if(elem.id === payload){
           elem.starred = false;
