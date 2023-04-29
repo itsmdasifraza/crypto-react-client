@@ -5,8 +5,9 @@ import {fetchCoins} from '../../../services/fetchCoins';
 import Pagination from '../../dashboard/Pagination/Pagination';
 import Container from '@mui/material/Container';
 import filterByText from '../../../filters/filterByText';
+import { useSelector } from "react-redux";
 const Dashboard = () => {
-    const [coins, setCoins] = useState([]);
+    const coins = useSelector((state) => state.coins);
     const [paginatedCoins, setPaginatedCoins] = useState([]);
     
     const updatePaginatedCoins = (page) => {
@@ -16,16 +17,6 @@ const Dashboard = () => {
     useEffect(()=>{
       setPaginatedCoins([...coins].splice(0, 10));
     },[coins]);
-
-    useEffect(() => {
-        const getCoins = async () => {
-            const coin = await fetchCoins();
-            if (coin) {
-              setCoins(coin);
-            }
-          };
-        getCoins();
-      }, []);
     
       const searchBar = (text) =>{
         // console.log(text);
