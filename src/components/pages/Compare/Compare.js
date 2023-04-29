@@ -12,9 +12,10 @@ import LineChart from '../../chart/LineChart/LineChart';
 import ChartType from '../../coin/ChartType/ChartType';
 import Grid2 from '@mui/material/Unstable_Grid2';
 import Grid from '../../dashboard/Grid/Grid';
+import { useSelector } from "react-redux";
 
 export const Compare = () => {
-
+    const coins = useSelector((state) => state.coins);
     const [coinOne, setCoinOne] = useState("bitcoin");
     const [coinTwo, setCoinTwo] = useState("ethereum");
     const [coinOneData, setCoinOneData] = useState(undefined);
@@ -27,20 +28,11 @@ export const Compare = () => {
     const [days, setDays] = useState(60);
     const [chartType, setChartType] = useState("prices");
 
-    const setCoinObject = (data) => {
-        const obj = {
-            id: data.id,
-            name: data.name,
-            symbol: data.symbol,
-            image: data.image.large,
-            desc: data.description.en,
-            price_change_percentage_24h: data.market_data.price_change_percentage_24h,
-            total_volume: data.market_data.total_volume.usd,
-            current_price: data.market_data.current_price.usd,
-            market_cap: data.market_data.market_cap.usd,
-        }
-        return obj;
-    }
+    // updating both coin data on apps redux store load
+    useEffect(() => {
+        getCoinData(coinOne, setCoinOneData);
+        getCoinData(coinTwo, setCoinTwoData);
+    }, [coins]);
 
     // updating coin data, prices, market_caps, total volumes of coin one
     useEffect(() => {
@@ -56,10 +48,13 @@ export const Compare = () => {
 
     // Fetching coin data
     async function getCoinData(id, fun) {
-        const data = await coinData(id);
-        if (data) {
-            fun(setCoinObject(data));
-        }
+        if(coins.length > 0){
+            let data = [...coins].filter((elem)=>{
+              if(elem.id === id) return true;
+              return false;
+            });
+            fun(data[0]);
+          }
     }
 
     // Toggling main Loader
