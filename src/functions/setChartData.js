@@ -1,9 +1,9 @@
-
+import { convertDate } from "./convertDate";
 
 const setChartData = (chartData, prices1, prices2) => {
     if (prices2) {
       chartData({
-        labels: prices1.map((price) => price[0]),
+        labels: prices1.map((price) => convertDate(price[0])),
         datasets: [
           {
             label: "Crypto1",
@@ -31,7 +31,7 @@ const setChartData = (chartData, prices1, prices2) => {
       });
     } else {
       chartData({
-        labels: prices1.map((price) => price[0]),
+        labels: prices1.map((price) => convertDate(price[0])),
         datasets: [
           {
             data: prices1.map((price) => price[1]),
