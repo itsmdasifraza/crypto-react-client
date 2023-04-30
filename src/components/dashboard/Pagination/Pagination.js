@@ -3,11 +3,9 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 
-export default function PaginationControlled({updatePaginatedCoins}) {
-  const [page, setPage] = useState(1);
+export default function PaginationControlled({updatePaginatedCoins, page}) {
 
   const handleChange = (event, value) => {
-    setPage(value);
     updatePaginatedCoins(value);
   };
 

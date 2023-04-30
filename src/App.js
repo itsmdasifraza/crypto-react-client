@@ -5,6 +5,7 @@ import Home from './components/pages/Home/Home';
 import Dashboard from './components/pages/Dashboard/Dashboard';
 import Coin from './components/pages/Coin/Coin';
 import { Compare } from './components/pages/Compare/Compare';
+import  Starred  from './components/pages/Starred/Starred';
 import { fetchCoins } from './services/fetchCoins';
 import { useDispatch } from "react-redux";
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/coin/:id" element={<Coin/>} />
           <Route path="/compare" element={<Compare />} />
+          <Route path="/starred" element={<Starred />} />
         </Routes>
     </div>
   );
