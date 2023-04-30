@@ -11,6 +11,7 @@ import Button from '../../common/Button/Button';
 import { Link } from 'react-router-dom';
 import './Starred.css';
 import Footer from '../../common/Footer/Footer';
+import scrollToTop from '../../../functions/scrollToTop';
 
 const Starred = () => {
   const coins = useSelector((state) => state.coins);
@@ -18,6 +19,10 @@ const Starred = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedStarredCoins, setPaginatedStarredCoins] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  useEffect(()=>{
+    scrollToTop();
+  },[]);
 
   useEffect(() => {
     updatePaginatedStarredCoins();
@@ -55,6 +60,7 @@ const Starred = () => {
     }
   }
   const handlePageChange = (event, page) => {
+    scrollToTop();
     setCurrentPage(page);
   };
 

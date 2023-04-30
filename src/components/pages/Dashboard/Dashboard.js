@@ -6,12 +6,17 @@ import Container from '@mui/material/Container';
 import filterByText from '../../../filters/filterByText';
 import { useSelector } from "react-redux";
 import Footer from '../../common/Footer/Footer';
+import scrollToTop from '../../../functions/scrollToTop';
 
 const Dashboard = () => {
   const coins = useSelector((state) => state.coins);
   const [paginatedCoins, setPaginatedCoins] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchText, setSearchText] = useState(""); 
+
+  useEffect(()=>{
+    scrollToTop();
+  },[]);
 
   const updatePaginatedCoins = () => {
     let arr = [...coins].splice((currentPage - 1) * 10, 10);
@@ -42,6 +47,7 @@ const Dashboard = () => {
     }
   }
   const handlePageChange = (event, page) => {
+    scrollToTop();
     setCurrentPage(page);
   };
   return (

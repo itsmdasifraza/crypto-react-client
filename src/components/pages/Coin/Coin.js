@@ -13,6 +13,7 @@ import Grid2 from '@mui/material/Unstable_Grid2';
 import Grid from '../../dashboard/Grid/Grid';
 import { useSelector } from "react-redux";
 import Footer from '../../common/Footer/Footer';
+import scrollToTop from '../../../functions/scrollToTop';
 const Coin = () => {
 
   const { id } = useParams();
@@ -24,6 +25,10 @@ const Coin = () => {
   const [days, setDays] = useState(60);
   const [chartType, setChartType] = useState("prices");
   const [marketData, setMarketData] = useState({});
+
+  useEffect(()=>{
+    scrollToTop();
+  },[]);
 
   useEffect(()=>{
     if(coins.length > 0 && id){

@@ -14,6 +14,7 @@ import Grid2 from '@mui/material/Unstable_Grid2';
 import Grid from '../../dashboard/Grid/Grid';
 import { useSelector } from "react-redux";
 import Footer from '../../common/Footer/Footer';
+import scrollToTop from '../../../functions/scrollToTop';
 
 export const Compare = () => {
     const coins = useSelector((state) => state.coins);
@@ -28,6 +29,10 @@ export const Compare = () => {
     const [isChartLoading, setIsChartLoading] = useState(true);
     const [days, setDays] = useState(60);
     const [chartType, setChartType] = useState("prices");
+
+    useEffect(()=>{
+        scrollToTop();
+      },[]);
 
     // updating both coin data on apps redux store load
     useEffect(() => {
