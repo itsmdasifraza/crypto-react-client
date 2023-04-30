@@ -6,6 +6,8 @@ import './Home.css';
 import scrollToTop from '../../../functions/scrollToTop';
 const Home = () => {
   
+  document.title = `Home | CoinStats`;
+
   useEffect(()=>{
     scrollToTop();
   },[]);

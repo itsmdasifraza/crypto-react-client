@@ -14,6 +14,8 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchText, setSearchText] = useState(""); 
 
+  document.title = `Coins | CoinStats`;
+
   useEffect(()=>{
     scrollToTop();
   },[]);

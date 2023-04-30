@@ -20,6 +20,8 @@ const Starred = () => {
   const [paginatedStarredCoins, setPaginatedStarredCoins] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  document.title = `Starred | CoinStats`;
+
   useEffect(()=>{
     scrollToTop();
   },[]);

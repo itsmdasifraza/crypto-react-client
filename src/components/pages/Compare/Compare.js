@@ -30,6 +30,8 @@ export const Compare = () => {
     const [days, setDays] = useState(60);
     const [chartType, setChartType] = useState("prices");
 
+    document.title = `Compare | CoinStats`;
+
     useEffect(()=>{
         scrollToTop();
       },[]);

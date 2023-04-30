@@ -26,6 +26,8 @@ const Coin = () => {
   const [chartType, setChartType] = useState("prices");
   const [marketData, setMarketData] = useState({});
 
+  document.title = `${id} | CoinStats`;
+
   useEffect(()=>{
     scrollToTop();
   },[]);
