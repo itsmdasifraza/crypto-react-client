@@ -8,6 +8,7 @@ import { Compare } from './components/pages/Compare/Compare';
 import  Starred  from './components/pages/Starred/Starred';
 import { fetchCoins } from './services/fetchCoins';
 import { useDispatch } from "react-redux";
+import NotFound from './components/pages/NotFound/NotFound';
 function App() {
 
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
           <Route path="/coin/:id" element={<Coin/>} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/starred" element={<Starred />} />
+          <Route path="/*" element={<NotFound/>} />
         </Routes>
     </div>
   );

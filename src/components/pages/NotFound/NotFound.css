@@ -1,0 +1,10 @@
+.not-found41{
+    background-color: var(--theme-bg-color-secondary);
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+}
+.not-found41 p{
+    text-align: center;
+    font-size: 30px;
+}
