@@ -1,0 +1,9 @@
+.no-starred40{
+    background-color: var(--theme-bg-color-secondary);
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+}
+.no-starred40 p{
+    text-align: center;
+}

@@ -93,6 +93,9 @@ const Starred = () => {
             })}
           </Grid2>
       </Container>
+      <Container maxWidth="lg">
+        {starredCoins.length === 0 ? <div className="no-starred40"><p>Oops, you haven't starred any coin yet.</p></div>:<></> }
+      </Container>
       <br/>
       <Pagination handlePageChange={handlePageChange} page={currentPage} />
       <Footer/>
