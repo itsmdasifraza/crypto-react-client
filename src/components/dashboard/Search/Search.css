@@ -4,6 +4,8 @@
     border-radius: 5px;
     width: 90%;
     margin-top: 12px;
+    background-color: var(--theme-bg-color-secondary);
+    color: var(--theme-color-secondary);
 }
 .inp90:focus{
     outline: none;

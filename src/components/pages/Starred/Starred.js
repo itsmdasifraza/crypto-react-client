@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../../common/Header/Header';
-import Tabs from '../../dashboard/Tabs/Tabs';
 import Pagination from '../../dashboard/Pagination/Pagination';
 import Container from '@mui/material/Container';
 import filterByText from '../../../filters/filterByText';
 import { useSelector } from "react-redux";
+import Grid from '../../starred/Grid/Grid';
+import Grid2 from '@mui/material/Unstable_Grid2';
+import Search from '../../dashboard/Search/Search';
+import Button from '../../common/Button/Button';
+import { Link } from 'react-router-dom';
 import './Starred.css';
 const Starred = () => {
   const coins = useSelector((state) => state.coins);
   const [starredCoins, setStarredCoins] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedStarredCoins, setPaginatedStarredCoins] = useState([]);
-  const [searchText, setSearchText] = useState(""); 
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     updatePaginatedStarredCoins();
@@ -27,8 +31,8 @@ const Starred = () => {
   }, [coins]);
 
   useEffect(() => {
-    if(searchText === "") updatePaginatedStarredCoins();
-    else handleSearchBar({target:{value: searchText}});
+    if (searchText === "") updatePaginatedStarredCoins();
+    else handleSearchBar({ target: { value: searchText } });
   }, [starredCoins]);
 
   const updatePaginatedStarredCoins = () => {
@@ -38,12 +42,12 @@ const Starred = () => {
       setCurrentPage(currentPage - 1);
     }
   }
-  const handleSearchBar  = (e) => {
+  const handleSearchBar = (e) => {
     let text = e.target.value;
     setSearchText(text);
     // console.log(text);
-    if(text === "") updatePaginatedStarredCoins();
-    else{
+    if (text === "") updatePaginatedStarredCoins();
+    else {
       let filteredStarredCoins = filterByText(text, [...starredCoins]);
       setPaginatedStarredCoins([...filteredStarredCoins].splice((1 - 1) * 10, 10));
     }
@@ -52,13 +56,34 @@ const Starred = () => {
     setCurrentPage(page);
   };
 
-  
+
   return (
     <>
       <Header />
       <Container maxWidth="lg">
-        <Tabs coins={paginatedStarredCoins} searchText={searchText} handleSearchBar={handleSearchBar} />
+        <Grid2 container spacing={2}>
+          <Grid2 xs={12} sm={6} key={56}>
+            <Search searchText={searchText} handleSearchBar={handleSearchBar} />
+          </Grid2>
+          <Grid2 xs={12} sm={6} key={76}>
+            <div style={{paddingTop:"12px"}}></div>
+            <Link to="/coins">
+              <Button text={"Explore more coins"} onClick={()=>{}}  />
+            </Link>
+          </Grid2>
+        </Grid2>
+        <br/>
+        <Grid2 container spacing={2}>
+          {paginatedStarredCoins.map((coin, i) => {
+              return(
+                <Grid2 xs={12} sm={6} md={4} lg={3}  key={i}>
+              <Grid coin={coin} key={i} />
+                </Grid2>
+              );            
+            })}
+          </Grid2>
       </Container>
+      <br/>
       <Pagination handlePageChange={handlePageChange} page={currentPage} />
     </>
   )

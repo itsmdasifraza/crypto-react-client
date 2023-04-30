@@ -22,11 +22,11 @@ const fetchCoins = () => {
           else { elem['starred'] = false; }
           return elem;
         });
-        console.log("coins", data);
+        // console.log("coins", data);
         dispatch(setCoins(data));
       })
       .catch((err) => {
-        console.log("err", err);
+        // console.log("err", err);
         dispatch(setCoins([]));
       });
   }

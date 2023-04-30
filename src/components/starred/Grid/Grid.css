@@ -1,0 +1,37 @@
+.container76{
+    background-color: var(--theme-bg-color-secondary);
+    padding: 15px;
+    border-radius: 0.75rem;
+}
+.flex76{
+  display: flex;
+  justify-content: space-between;
+}
+.coin-logo76{
+  width: 50px;
+  height: 50px;
+}
+.crypt-name76 h4{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.crypt-name76 p{  
+  margin-top: 0;
+}
+.change-percentage76{
+  display: flex;
+  justify-content: space-between;
+}
+.rel-obj76{
+  position: relative;
+}
+.rel-obj76 .icon{
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  top:0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

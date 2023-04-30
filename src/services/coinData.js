@@ -5,7 +5,7 @@ const coinData = (id) => {
         axios
         .get(`https://api.coingecko.com/api/v3/coins/${id}`, { crossDomain: true })
         .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             resolve(res.data);
         })
         .catch((err) => {

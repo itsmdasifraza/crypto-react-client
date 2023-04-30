@@ -15,5 +15,6 @@
       background-color: var(--theme-bg-color-primary);
       height: 100vh;
       padding: 15px;
+      padding-top: 10px;
     }
   }

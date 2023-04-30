@@ -44,39 +44,39 @@ function List({ coin }) {
             </Tooltip>
           </div>
           <div className="f-width">
-            <Tooltip title="Coin Info" placement="bottom-start">
+            <Tooltip title="Coin info" placement="bottom-start">
               <div>
-                <div className="">
-                  <p className="" style={{ margin: 0 }}>{coin.name}</p>
-                  <p className="" style={{ margin: 0 }}>{coin.symbol}</p>
+                <div>
+                  <p style={{ margin: 0 }}>{coin.name}</p>
+                  <p style={{ margin: 0 }}>{coin.symbol}</p>
                 </div>
               </div>
             </Tooltip>
           </div>
           <div className="f-width">
-            <Tooltip title="Price Change In 24Hrs" placement="bottom-start">
+            <Tooltip title="Price change in 24Hrs" placement="bottom-start">
               <p style={style}>{coin.price_change_percentage_24h.toFixed(2)}%</p>
             </Tooltip>
           </div>
           <div className="f-width">
-            <Tooltip title="Insight In 24Hrs" placement="bottom-start">
+            <Tooltip title="Insight in 24Hrs" placement="bottom-start">
               {coin.price_change_percentage_24h > 0 ?
                 <p><TrendingUpRoundedIcon style={style} /></p> :
                 <p><TrendingDownRoundedIcon style={style} /></p>}
             </Tooltip>
           </div>
           <div className="f-width">
-            <Tooltip title="Current Price">
+            <Tooltip title="Current price">
               <p style={style}>${coin.current_price.toLocaleString()}</p>
             </Tooltip>
           </div>
           <div className="f-width">
-            <Tooltip title="Total Volume" placement="bottom-start">
+            <Tooltip title="Total volume" placement="bottom-start">
               <p>{coin.total_volume.toLocaleString()}</p>
             </Tooltip>
           </div>
           <div className="f-width">
-            <Tooltip title="Market Cap">
+            <Tooltip title="Market cap">
               <p>${coin.market_cap.toLocaleString()}</p>
             </Tooltip>
           </div>

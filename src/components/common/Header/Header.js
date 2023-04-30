@@ -1,14 +1,13 @@
 import React from 'react'
 import TemporaryDrawer from "./drawer";
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
 import "./Header.css"; 
 import Container from '@mui/material/Container';
 
 const Header = () => {
   return (
     <Container maxWidth="lg" sx={{   position: "sticky",
-      top: 0,zIndex: 100
+      top: 0,zIndex: 100, backgroundColor: "var(--theme-bg-color-primary)"
       }}>
 <div className="navbar">
         <Link to="/">
@@ -18,7 +17,7 @@ const Header = () => {
         <Link to="/">
           <p className="link">Home</p>
         </Link>
-        <Link to="/dashboard">
+        <Link to="/coins">
         <p className="link">Coins</p>
         </Link>
         <Link to="/compare">
@@ -29,7 +28,7 @@ const Header = () => {
         </Link>
       </div>
       <div className="mobile-drawer">
-        <TemporaryDrawer/>
+        <TemporaryDrawer />
       </div>
     </div>
     </Container>

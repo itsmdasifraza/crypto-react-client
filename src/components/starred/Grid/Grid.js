@@ -21,7 +21,7 @@ function Grid({ coin }) {
   }
 
   return (
-    <div className="rel-obj09">
+    <div className="rel-obj76">
       <div className="icon" onClick={handleStarredItem}>
         {coin.starred ?
           <Tooltip title="Unstar" placement="bottom-start">
@@ -34,45 +34,39 @@ function Grid({ coin }) {
         }
       </div>
       <Link to={`/coin/${coin.id}`}>
-        <div className="container87">
-          <div className="flex43">
+        <div className="container76">
+          <div className="flex76">
           <Tooltip title="Icon" placement="bottom-start">
-            <img src={coin.image} alt={coin.id} className="coin-logo43" />
+            <img src={coin.image} alt={coin.id} className="coin-logo76" />
           </Tooltip>
-            <Tooltip title="Coin info" placement="bottom-start">
-            <div className="crypt-name87">
+            <Tooltip title="Coin Info" placement="bottom-start">
+            <div className="crypt-name76">
               <h4>{coin.name}</h4>
               <p>{coin.symbol}</p>
             </div>
             </Tooltip>
             <div><StarsIcon sx={{ fontSize: 30 }} /></div>
           </div>
-          <div className="change-percentage87">
+          <div className="change-percentage76">
             <div className=" " style={style} >
-            <Tooltip title="Price change in 24Hrs" placement="bottom-start">
+            <Tooltip title="Price Change In 24Hrs" placement="bottom-start">
               <div>
               <p style={{marginTop:"20px"}}>{coin.price_change_percentage_24h.toFixed(2)}%</p>
               </div>
             </Tooltip>
             </div>
             <div>
-            <Tooltip title="Current price">
+            <Tooltip title="Current Price">
               <h3 style={style}>${coin.current_price.toLocaleString()}</h3>
             </Tooltip>
             </div>
             <div className="">
-            <Tooltip title="Insight in 24Hrs" placement="bottom-start">
+            <Tooltip title="Insight In 24Hrs" placement="bottom-start">
               {coin.price_change_percentage_24h > 0 ?
                 <p><TrendingUpRoundedIcon style={style} /></p> :
                 <p><TrendingDownRoundedIcon style={style} /></p>}
             </Tooltip>
             </div>
-          </div>
-
-          <div className="">
-            <p style={{ textAlign: "center" }}>Total volume: {coin.total_volume.toLocaleString()}</p>
-            <p style={{ textAlign: "center" }}>Market cap: ${coin.market_cap.toLocaleString()}</p>
-            {/* <p style={{textAlign:"center"}}>Total Supply: {coin.total_supply}</p> */}
           </div>
         </div>
       </Link>

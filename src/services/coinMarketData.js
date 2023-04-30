@@ -8,7 +8,7 @@ const coinMarketData = (id, days) => {
             { crossDomain: true }
           )
         .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             resolve(res.data);
         })
         .catch((err) => {
