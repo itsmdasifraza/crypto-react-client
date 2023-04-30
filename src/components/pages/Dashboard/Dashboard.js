@@ -6,35 +6,49 @@ import Container from '@mui/material/Container';
 import filterByText from '../../../filters/filterByText';
 import { useSelector } from "react-redux";
 const Dashboard = () => {
-    const coins = useSelector((state) => state.coins);
-    const [count, setCount] = useState(2);
-    const [paginatedCoins, setPaginatedCoins] = useState([]);
-    
-    const updatePaginatedCoins = (page) => {
-      setPaginatedCoins([...coins].splice((page - 1) * 10, 10));
-    }
+  const coins = useSelector((state) => state.coins);
+  const [paginatedCoins, setPaginatedCoins] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchText, setSearchText] = useState(""); 
 
-    useEffect(()=>{
-      if(count){
-        setPaginatedCoins([...coins].splice(0, 10));
-        setCount((c)=>{
-          return c - 1;
-        });
-      }
-    },[coins]);
-    
-      const searchBar = (text) =>{
-        // console.log(text);
-        let filteredCoins = filterByText(text, [...coins]);
-        setPaginatedCoins([...filteredCoins].splice((1 - 1) * 10, 10));
-      }
+  const updatePaginatedCoins = () => {
+    let arr = [...coins].splice((currentPage - 1) * 10, 10);
+    setPaginatedCoins(arr);
+    if (arr.length === 0 && currentPage >= 2) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+
+  useEffect(() => {
+    updatePaginatedCoins();
+    setSearchText("");
+  }, [currentPage]);
+
+  useEffect(() => {
+    if(searchText === "")  updatePaginatedCoins();
+    else handleSearchBar({target:{value: searchText}});
+  }, [coins]);
+
+  const handleSearchBar = (e) => {
+    let text = e.target.value;
+    setSearchText(text);
+    // console.log(text);
+    if(text === "") updatePaginatedCoins();
+    else{
+      let filteredCoins = filterByText(text, [...coins]);
+      setPaginatedCoins([...filteredCoins].splice(0, 8));
+    }
+  }
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page);
+  };
   return (
     <>
-    <Header/>
-    <Container maxWidth="lg">
-    <Tabs coins = {paginatedCoins} searchBar = {searchBar}/>
-    </Container>
-    <Pagination updatePaginatedCoins={updatePaginatedCoins}/>
+      <Header />
+      <Container maxWidth="lg">
+        <Tabs coins={paginatedCoins} searchText={searchText} handleSearchBar={handleSearchBar} />
+      </Container>
+      <Pagination handlePageChange={handlePageChange} page={currentPage} />
     </>
   )
 }

@@ -10,7 +10,8 @@ import Grid from '../Grid/Grid';
 import "./Tabs.css";
 import Grid2 from '@mui/material/Unstable_Grid2';
 import Search from '../Search/Search';
-export default function TabsComponent({ coins, searchBar }) {
+
+export default function TabsComponent({ coins, searchText, handleSearchBar }) {
   const [value, setValue] = useState("grid");
 
   const handleChange = (event, newValue) => {
@@ -24,15 +25,15 @@ export default function TabsComponent({ coins, searchBar }) {
       },
     },
   });
-  const searchText = (text) =>{
-    searchBar(text);
-  }
+  // const searchText = (text) =>{
+  //   searchBar(text);
+  // }
   return (
     <ThemeProvider theme={theme}>
       <TabContext  value={value}>
       <Grid2 container spacing={2}>
       <Grid2 xs={12} sm={6} key={56}>
-      <Search searchText ={searchText}/>
+      <Search searchText ={searchText} handleSearchBar={handleSearchBar}/>
       </Grid2>
       <Grid2 xs={12} sm={6} key={76}>
       <Box  sx={{ borderBottom: 1, borderColor: '#414141' }}>

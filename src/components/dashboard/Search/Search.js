@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Search.css';
-const Search = ({searchText}) => {
-    const [text, setText] = useState("");
-   
-    useEffect(()=>{
-        searchText(text);
-    },[text]);
- 
+const Search = ({searchText, handleSearchBar}) => {
     return (
-    
-    <input className="inp90" type="text"  onChange={(e)=>{
-        setText(e.target.value);
-    }} value={text} placeholder="Search coins" />
+    <input className="inp90" type="text"  onChange={handleSearchBar} value={searchText} placeholder="Search coins" />
   )
 }
 

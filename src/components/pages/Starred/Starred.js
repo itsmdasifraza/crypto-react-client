@@ -7,44 +7,59 @@ import filterByText from '../../../filters/filterByText';
 import { useSelector } from "react-redux";
 import './Starred.css';
 const Starred = () => {
-    const coins = useSelector((state) => state.coins);
-    const [starredCoins, setStarredCoins] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [paginatedStarredCoins, setPaginatedStarredCoins] = useState([]);
-    
-    const updatePaginatedStarredCoins = (page) => {
-      setCurrentPage(page);
-      let arr = [...starredCoins].splice((page - 1) * 10, 10)
-      setPaginatedStarredCoins(arr);
-      if(arr.length === 0){
-        if(page - 1 >= 1) updatePaginatedStarredCoins(page - 1);
-      }
+  const coins = useSelector((state) => state.coins);
+  const [starredCoins, setStarredCoins] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paginatedStarredCoins, setPaginatedStarredCoins] = useState([]);
+  const [searchText, setSearchText] = useState(""); 
+
+  useEffect(() => {
+    updatePaginatedStarredCoins();
+    setSearchText("");
+  }, [currentPage]);
+
+  useEffect(() => {
+    let data = coins.filter((elem) => {
+      if (elem.starred === true) return true;
+      return false;
+    });
+    setStarredCoins(data);
+  }, [coins]);
+
+  useEffect(() => {
+    if(searchText === "") updatePaginatedStarredCoins();
+    else handleSearchBar({target:{value: searchText}});
+  }, [starredCoins]);
+
+  const updatePaginatedStarredCoins = () => {
+    let arr = [...starredCoins].splice((currentPage - 1) * 10, 10);
+    setPaginatedStarredCoins(arr);
+    if (arr.length === 0 && currentPage >= 2) {
+      setCurrentPage(currentPage - 1);
     }
+  }
+  const handleSearchBar  = (e) => {
+    let text = e.target.value;
+    setSearchText(text);
+    // console.log(text);
+    if(text === "") updatePaginatedStarredCoins();
+    else{
+      let filteredStarredCoins = filterByText(text, [...starredCoins]);
+      setPaginatedStarredCoins([...filteredStarredCoins].splice((1 - 1) * 10, 10));
+    }
+  }
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page);
+  };
 
-    useEffect(()=>{
-      let data = coins.filter((elem)=>{
-        if(elem.starred === true) return true;
-        return false;
-      });
-      setStarredCoins(data);
-    },[coins]);
-
-    useEffect(()=>{
-        updatePaginatedStarredCoins(currentPage);
-    },[starredCoins]);
-    
-      const searchBar = (text) =>{
-        // console.log(text);
-        let filteredStarredCoins = filterByText(text, [...starredCoins]);
-        setPaginatedStarredCoins([...filteredStarredCoins].splice((1 - 1) * 10, 10));
-      }
+  
   return (
     <>
-    <Header/>
-    <Container maxWidth="lg">
-    <Tabs coins = {paginatedStarredCoins} searchBar = {searchBar}/>
-    </Container>
-    <Pagination updatePaginatedCoins={updatePaginatedStarredCoins} page= {currentPage}/>
+      <Header />
+      <Container maxWidth="lg">
+        <Tabs coins={paginatedStarredCoins} searchText={searchText} handleSearchBar={handleSearchBar} />
+      </Container>
+      <Pagination handlePageChange={handlePageChange} page={currentPage} />
     </>
   )
 }
