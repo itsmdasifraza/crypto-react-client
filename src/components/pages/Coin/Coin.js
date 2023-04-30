@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Coin.css';
 import coinMarketData from '../../../services/coinMarketData';
 import { useParams } from 'react-router-dom';
-import setChartData from '../../../functions/setChartData';
+import {setChartOneData} from '../../../functions/setChartData';
 import LineChart from '../../chart/LineChart/LineChart';
 import Container from '@mui/material/Container';
 import Header from '../../common/Header/Header';
@@ -49,7 +49,7 @@ const Coin = () => {
       const market = await coinMarketData(id, days);
       if (market) {
         setMarketData(market);
-        setChartData(setChart, market[chartType]);
+        setChartOneData(setChart, market[chartType], id);
         setIsChartLoading(false);
       }
     }
@@ -63,7 +63,7 @@ const Coin = () => {
   };
   const handleChartTypeChange = async (event) => {
       setChartType(event.target.value);
-      setChartData(setChart,marketData[event.target.value]);
+      setChartOneData(setChart,marketData[event.target.value], id);
   }
   return (
     <>

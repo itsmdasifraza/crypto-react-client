@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Compare.css';
 import CompareSelect from '../../compare/CompareSelect/CompareSelect';
-import coinData from '../../../services/coinData';
-import setChartData from '../../../functions/setChartData';
+import {setChartTwoData} from '../../../functions/setChartData';
 import coinMarketData from '../../../services/coinMarketData';
 import Header from '../../common/Header/Header';
 import List from '../../dashboard/List/List';
@@ -81,7 +80,7 @@ export const Compare = () => {
     // refreshing (updating) graphs of chart.js  
     useEffect(() => {
         if (marketDataOne && marketDataTwo) {
-            setChartData(setChart, marketDataOne[chartType], marketDataTwo[chartType]);
+            setChartTwoData(setChart, marketDataOne[chartType], marketDataTwo[chartType], coinOne, coinTwo);
             setIsChartLoading(false);
         }
     }, [marketDataOne, marketDataTwo, chartType]);
