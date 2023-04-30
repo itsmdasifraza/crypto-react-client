@@ -10,6 +10,8 @@ import Search from '../../dashboard/Search/Search';
 import Button from '../../common/Button/Button';
 import { Link } from 'react-router-dom';
 import './Starred.css';
+import Footer from '../../common/Footer/Footer';
+
 const Starred = () => {
   const coins = useSelector((state) => state.coins);
   const [starredCoins, setStarredCoins] = useState([]);
@@ -85,6 +87,7 @@ const Starred = () => {
       </Container>
       <br/>
       <Pagination handlePageChange={handlePageChange} page={currentPage} />
+      <Footer/>
     </>
   )
 }

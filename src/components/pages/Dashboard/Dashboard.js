@@ -5,6 +5,8 @@ import Pagination from '../../dashboard/Pagination/Pagination';
 import Container from '@mui/material/Container';
 import filterByText from '../../../filters/filterByText';
 import { useSelector } from "react-redux";
+import Footer from '../../common/Footer/Footer';
+
 const Dashboard = () => {
   const coins = useSelector((state) => state.coins);
   const [paginatedCoins, setPaginatedCoins] = useState([]);
@@ -49,6 +51,7 @@ const Dashboard = () => {
         <Tabs coins={paginatedCoins} searchText={searchText} handleSearchBar={handleSearchBar} />
       </Container>
       <Pagination handlePageChange={handlePageChange} page={currentPage} />
+      <Footer/>
     </>
   )
 }
