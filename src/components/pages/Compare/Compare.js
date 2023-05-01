@@ -119,13 +119,13 @@ export const Compare = () => {
                 <>
                     <Container maxWidth="lg">
                         <div className="list-view-67">
-                        <List coin={coinOneData}  />
-                        <List coin={coinTwoData}  />
+                        <List coin={coinOneData} index={0} />
+                        <List coin={coinTwoData} index={1} />
                         </div>
                         <div className="grid-view-67">
-                        <Grid coin={coinOneData} />
+                        <Grid coin={coinOneData} index={0} />
                         <br/>
-                        <Grid coin={coinTwoData}  />
+                        <Grid coin={coinTwoData} index={1}  />
 
                         </div>
                     </Container>
@@ -148,6 +148,7 @@ export const Compare = () => {
                                 </Grid2>
                                 <br/>
                                 <LineChart chartData={chart} chartType={chartType} />
+                                <br/>
                             </>
                         }
                     </Container>

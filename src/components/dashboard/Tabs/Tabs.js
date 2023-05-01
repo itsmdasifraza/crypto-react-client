@@ -51,7 +51,7 @@ export default function TabsComponent({ coins, searchText, handleSearchBar }) {
           {coins.map((coin, i) => {
               return(
                 <Grid2 xs={12} sm={6} md={4} lg={3}  key={i}>
-              <Grid coin={coin} key={i} />
+              <Grid coin={coin} index={i} key={i} />
                 </Grid2>
               ); 
               
@@ -64,7 +64,7 @@ export default function TabsComponent({ coins, searchText, handleSearchBar }) {
           {coins.map((coin, i) => {
               return(
                 <Grid2 xs={12} key={i}>
-              <List coin={coin} key={i} />
+              <List coin={coin} index={i} key={i} />
                 </Grid2>
               ); 
             })}

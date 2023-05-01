@@ -17,8 +17,9 @@ const Main = () => {
            transition={{ duration: 0.5, delay: 0 }} className="name">Analyze crypto coin stats in real time,</motion.h1>
             <motion.p initial={{ opacity: 0, y: 50 }}
            animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.5, delay: 0.2 }} className="para">Fetches history and compare different crypto currencies,
-              look at their graphs - prices, total volume, market caps, and add them to your starred list also.</motion.p>
+           transition={{ duration: 0.5, delay: 0.2 }} className="para">With so many cryptocurrencies in circulation and rapid fluctuations, being up to date
+           with all the cryptocurrencies can be hard. A React platform is built to track all the
+           insights of a cryptocurrency in real time using public web server.</motion.p>
             <div className="button">
               <Link to="/coins">
                   <Button text={"Explore coins"} outlined={false} onClick={() => { }} />

@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 import StarsIcon from '@mui/icons-material/Stars';
 import starredCoin from "../../../functions/starredCoin";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 
-function List({ coin }) {
+function List({ coin, index }) {
   const dispatch = useDispatch();
   const style = {
     color:
@@ -22,7 +23,9 @@ function List({ coin }) {
   }
 
   return (
-    <div className="rel-obj11">
+    <motion.div initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index/10 }} className="rel-obj11">
       <div className="icon" onClick={handleStarredItem}>
         {coin.starred ?
         <Tooltip title="Unstar" placement="bottom-start">
@@ -92,7 +95,7 @@ function List({ coin }) {
 
       </Link>
 
-    </div>
+    </motion.div>
 
   );
 }

@@ -7,8 +7,9 @@ import StarsIcon from '@mui/icons-material/Stars';
 import starredCoin from "../../../functions/starredCoin";
 import { useDispatch } from "react-redux";
 import { Tooltip } from "@mui/material";
+import { motion } from "framer-motion";
 
-function Grid({ coin }) {
+function Grid({ coin, index }) {
   const dispatch = useDispatch();
   const style = {
     color:
@@ -21,7 +22,9 @@ function Grid({ coin }) {
   }
 
   return (
-    <div className="rel-obj09">
+    <motion.div initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index/10 }}  className="rel-obj09">
       <div className="icon" onClick={handleStarredItem}>
         {coin.starred ?
           <Tooltip title="Unstar" placement="bottom-start">
@@ -76,7 +79,7 @@ function Grid({ coin }) {
           </div>
         </div>
       </Link>
-    </div>
+    </motion.div>
   );
 }
 

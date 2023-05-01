@@ -87,7 +87,7 @@ const Starred = () => {
           {paginatedStarredCoins.map((coin, i) => {
               return(
                 <Grid2 xs={12} sm={6} md={4} lg={3}  key={i}>
-              <Grid coin={coin} key={i} />
+              <Grid coin={coin} index={i} key={i} />
                 </Grid2>
               );            
             })}

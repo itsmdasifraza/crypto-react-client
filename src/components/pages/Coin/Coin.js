@@ -74,11 +74,11 @@ const Coin = () => {
         <>
           <Container maxWidth="lg">
             <div className="list-view-78">
-            <List coin={coin} />
+            <List coin={coin} index={0} />
 
             </div>
             <div className="grid-view-78">
-            <Grid coin={coin} />
+            <Grid coin={coin} index={0}/>
 
             </div>
           </Container>
@@ -107,6 +107,7 @@ const Coin = () => {
              
              }
           </Container>
+          <br/>
         </>
       }
       <Footer/>
