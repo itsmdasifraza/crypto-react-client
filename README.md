@@ -26,3 +26,29 @@ Where user can saerch crypto coins.
 Only showing 10 crypto coins per page
 
 ![pagination-min](https://user-images.githubusercontent.com/58258334/235502088-ebb2c98f-a2ea-4dec-a839-0a90f0d3b1ce.png)
+
+![coin-btc-min](https://user-images.githubusercontent.com/58258334/235503048-11085ecc-7abd-46eb-a924-43d8f721dbfb.png)
+
+![coin-btc-days-min](https://user-images.githubusercontent.com/58258334/235503084-41cbec8a-4c05-432c-b40a-746816418800.png)
+
+![coin-btc-volume-min](https://user-images.githubusercontent.com/58258334/235503134-dc83845b-f48b-4e7f-a16b-9cfcbe4e5f00.png)
+
+![coin-btc-market-cap-min](https://user-images.githubusercontent.com/58258334/235503114-6fbc699a-a83a-47ad-812c-f0fb914563a2.png)
+
+![compare-min](https://user-images.githubusercontent.com/58258334/235503396-8ac1ce2c-a429-40b4-a6ce-c4b7670612a0.png)
+
+![comparecoin1-min](https://user-images.githubusercontent.com/58258334/235503487-57de9530-958b-4693-a2b2-af6c017c1b87.png)
+
+![comparecoin2-min](https://user-images.githubusercontent.com/58258334/235503488-3b2d6e17-31c2-4c36-8446-daad728b80e0.png)
+
+![comparedays-min](https://user-images.githubusercontent.com/58258334/235503500-c0840c43-9c2a-4a43-a5ee-87694b29ac98.png)
+
+![comparemarketcap-min](https://user-images.githubusercontent.com/58258334/235503551-d3d339c8-951b-4ead-9c37-c5a67e936388.png)
+
+![comparevolume-min](https://user-images.githubusercontent.com/58258334/235503590-306cbfc8-e229-46ad-9ded-5347c8e9f2ec.png)
+
+![starredempty-min](https://user-images.githubusercontent.com/58258334/235503649-02245eaa-d4ef-464c-837a-d01d9a19fcb8.png)
+
+![starred-min](https://user-images.githubusercontent.com/58258334/235503666-ca6decf2-b0cf-4809-a5ca-149ccee89241.png)
+
+![404-min](https://user-images.githubusercontent.com/58258334/235503676-f751c6a2-6132-4ec9-adc7-3df95b825f29.png)
